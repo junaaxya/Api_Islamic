@@ -4,8 +4,9 @@ const {
     getAllQuotes,
     getQuoteById,
 } = require('../controllers/qoutesController');
+const apiKeyAuth = require('../middleware/apiKeyAuth');
 
-router.get('/quotes', getAllQuotes);
-router.get('/quotes/:id', getQuoteById);
+router.get('/quotes', apiKeyAuth, getAllQuotes);
+router.get('/quotes/:id', apiKeyAuth, getQuoteById);
 
 module.exports = router;

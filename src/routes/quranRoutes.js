@@ -1,10 +1,12 @@
-
 const express = require('express');
 const router = express.Router();
-const { getAllQuranVerses, getQuranVerseById } = require('../controllers/quranController');
+const {
+    getAllQuranVerses,
+    getQuranVerseById,
+} = require('../controllers/quranController');
+const apiKeyAuth = require('../middleware/apiKeyAuth');
 
-router.get('/quran', getAllQuranVerses);
-router.get('/quran/:id', getQuranVerseById);
+router.get('/quran', apiKeyAuth, getAllQuranVerses);
+router.get('/quran/:id', apiKeyAuth, getQuranVerseById);
 
 module.exports = router;
-
